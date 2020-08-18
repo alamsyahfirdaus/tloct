@@ -1,0 +1,32 @@
+$(document).ready(function () {
+  $.validator.setDefaults();
+  $('#form').validate({
+    rules: {
+      username: {
+        required: true,
+      },
+      password: {
+        required: true
+      },
+    },
+    messages: {
+      username: {
+        required: "Username wajib diisi",
+      },
+      password: {
+        required: "Password wajib diisi"
+      },
+    },
+    errorElement: 'span',
+    errorPlacement: function (error, element) {
+      error.addClass('invalid-feedback');
+      element.closest('.input-group').append(error);
+    },
+    highlight: function (element, errorClass, validClass) {
+      $(element).addClass('is-invalid');
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).removeClass('is-invalid');
+    }
+  });
+});
